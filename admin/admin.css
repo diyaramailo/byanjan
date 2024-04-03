@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    
+}
+body{
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    display: flex;
+}
+#menu{
+    background: rgb(248, 226, 30);
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+}
+
+#menu .logo{
+    display: flex;
+    align-items: center;
+    color: rgb(12, 9, 9);
+    padding: 30px 0 0 30px;
+
+}
+#menu .logo img{
+    width: 60px;
+    margin-right: 15px;
+
+}
+
+#menu .logo{
+    display: flex;
+    align-items: center;
+    color: rgb(8, 26, 63);
+    padding: 30px 0 0 30px;
+}
+#menu .items{
+    margin-top: 40px;
+}
+#menu .items li{
+    list-style: none;
+    padding: 15px 0;
+    transition: 0.3s ease;
+}
+#menu .items li i{
+    color: rgb(14, 13, 13);
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    margin: 0 10px 0 25px;
+}
+
+#menu .items li a{
+    text-decoration: none;
+    color: rgb(3, 3, 3);
+    font-weight: 300px;
+    margin: center;
+    transition: 0.3s ease;
+}
+#menu .items li{
+   font-size: 14px;
+   margin: 0 10px 0 25px;
+}
+#menu .items li:hover{
+    background: rgb(236, 238, 120);
+    cursor: pointer;
+}
+#menu .items li:hover a{
+    color: rgb(45, 80, 110);
+}
+
+#menu .items li:nth-child(1){
+    border-left: 4px solid whitesmoke;
+}
+#menu .items li:hover i{
+    color: rgb(45, 80, 110);
+}
+#interface{
+    width: calc(100% - 300px);
+    position: relative;
+    margin-left: 300px;
+}
+
+#interface .navigation{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: aliceblue;
+    padding: 15px 30px;
+    border-bottom: 3px solid grey;
+    position: fixed;
+    width: calc(100% - 300px);
+}
+#interface .navigation .search{
+    display: flex;
+    justify-content:flex-start ;
+    align-items: center;
+    padding: 10px 10px;
+    border: 1px solid rgb(243, 238, 239);
+    border-radius: 4px;
+}
+#interface .navigation .search i{
+    margin-right: 14px;
+}
+#interface .navigation .search input{
+    border:none;
+    outline: none;
+    font-size:14px;
+}
+#interface .navigation .profile{
+    display: flex;
+    justify-content:flex-start ;
+    align-items: center;
+}
+#interface .navigation .profile i{
+    margin-right: 20px;
+    font-size: 14px;
+    font-weight: 400;
+}
+#interface .navigation .profile img{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.n1{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#menu-btn{
+    color: rgb(27, 26, 26);
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+    display: none;
+}
+.i-name{
+    color: rgb(7, 4, 4);
+    padding: 30px 30px 0 30px;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 70px;
+}
+.values{
+    padding: 30px 30px 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap:wrap;
+}
+.values .val-box{
+    background-color: aliceblue;
+    width: 235px;
+    padding: 16px 20px;
+    border-radius: 5px;
+    display: -webkit-inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+.values .val-box i{
+    font-size: 25px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    color: rgb(255, 251, 246);
+    margin-right: 15px;
+}
+.values .val-box:nth-child(1) i{
+    background-color: rgb(58, 235, 58);
+}
+.values .val-box:nth-child(2) i{
+    background-color: rgb(215, 50, 215);
+}
+.values .val-box:nth-child(3) i{
+    background-color: rgb(209, 87, 46);
+}
+.values .val-box:nth-child(4) i{
+    background-color: rgb(48, 184, 184);
+}
+.values .val-box h3{
+    font-size: 15px;
+    font-weight: 600;
+}
+.values .val-box span{
+    font-size: 15px;
+    color: rgb(18, 19, 27);
+
+}
+.board{
+    width: 100%;
+    margin: 30px 0 ;
+    overflow: auto;
+    background-color: aliceblue;
+    border-radius: 8px;
+}
+.board img{
+    width:45px;
+    height:45px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right:15px;
+}
+.board h5{
+    font-weight: 600;
+    font-size: 14px;
+}
+.board p{
+    font-weight: 400;
+    font-size: 13px;
+    color: rgb(138, 138, 138);
+}
+.board .people{
+    display: flex;
+    justify-content: flex-start;
+    align-items:center;
+    text-align:start;
+}
+table{
+    border-collapse: collapse;
+
+}
+tr{
+    border-bottom: 1px solid whitesmoke;
+}
+thead td{
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 400;
+    background-color: rgb(241, 235, 140);
+    text-align: start;
+    padding: 15px;
+}
+tbody tr td{
+    padding: 10px 15px;
+
+}
+.active p{
+    background-color: rgb(142, 220, 63);
+    padding: 2px 10px;
+    display: inline-block;
+    border-radius: 40px;
+    color: black;
+}
+.edit a{
+    text-decoration: none;
+    font-size: 14px;
+    color: rgb(75, 75, 180);
+    font-weight: 600;
+}
+@media(max-width: 769px){
+    #menu {
+        width: 270px;
+        position: fixed;
+        left: -270px;
+        transition: 0.3s ease;
+    }
+    #menu.active{
+        left: 0px;
+    }
+    #menu-btn{
+        display: initial;
+    }
+    #menu.active~#interface{
+        width: calc(100% - 270px);
+        margin-left:270px;
+        transition: 0.3s ease;
+
+    }
+    #interface{
+        width: 100%;
+        margin-left: 0px;
+        display: inline-block;
+        transition: 0.3s ease;
+    }
+    #interface .navigation{
+        width: 100%;
+
+    }
+    .values{
+        padding: 30px 30px 0 30px;
+        justify-content: flex-start;
+    }
+    .values .val-box{
+        padding: 16px 20px;
+        margin: 10px 20px 10px 0;
+    }
+    .board{
+        width: 92%;
+        padding: 0;
+        overflow-x: auto;
+    }
+    table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+}

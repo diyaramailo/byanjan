@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(8, 8, 8);
+}
+
+form legend{
+    font-size: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+form{
+    max-width: 640px;
+    margin:40px auto;
+    padding: 30px;
+    /*margin-left:auto;
+    margin-right:auto:*/
+    box-shadow: 0 0 24px 0 rgb(241, 187, 37);
+}
+.field-group input,
+.field-group select{
+    border: 1px solid #f7dd4c;
+    width:100%;
+    padding: 4px 10px;
+    vertical-align: middle;
+}
+.field-group input,
+.field-group select{
+    height: 38px;
+}
+.field-group input[type*="checkbox"],
+.field-group input[type*="radio"]{
+    width:22px;
+    height:22px;
+    height:auto;
+}
+.field-group label{
+font-weight: 700;
+vertical-align: middle;
+}
+.field-group{
+    margin-bottom:10px;
+    display:flex;
+    flex-wrap: wrap;
+}
+.field-group > label,
+.field-group > h4{
+    width: 80px;
+}
+.field-group>input,
+.field-group>select{
+    width:calc(100% - 80px)
+}
+.field-group h4{
+    margin: 0;
+    
+}
+.field-group.field-group-alt > label{
+    width: auto;
+}
+.field-subgroup{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+form fieldset{
+    margin-bottom:20px;
+}
+form legend{
+    font-weight:700;
+    text-transform:uppercase;
+}
+button group{
+    margin:10px;
+}
+button{
+    color:white;
+    padding: 10px 20px;
+    border:none;
+    text-align: center;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+button:first-child{
+
+    background-color: rgb(71, 231, 71);
+
+}
+button:last-child{
+    background-color: rgb(49, 65, 134);
+}
+button:hover{
+    transform: translateY(-3px);
+    cursor: pointer;
+}
+@media all and (max-width:480px){
+    .field-group > label,
+    .field-group > input,
+    .field-group > select{
+        width:100%;
+    }
+    form{
+        background-color: rgb(247, 150, 25);
+    }
+}
+
+
+/* Media
+-screen
+-Print
+-All
+i.e 
+@media screen and  (max-width:1024px) and (min-width:600px){
+ css selector{
+    property: value
+ }
+}
+*/
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+    width: 100%;
+}
