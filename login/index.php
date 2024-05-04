@@ -76,7 +76,7 @@ $conn->close();
             <div class="right">
                 <img src="../images/byanjan.png" alt="">
             
-                <form method="POST" name="m__register_form" target="_blank">
+                <form method="POST" name="m__register_form">
                     <h4>Welcome to Byanjan!</h4>
 
                     <div class="group">
