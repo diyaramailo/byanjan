@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2024 at 07:15 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Generation Time: May 04, 2024 at 08:35 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,7 +53,7 @@ CREATE TABLE `ingredient` (
 --
 
 CREATE TABLE `recipe_table` (
-  `Recipe_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `recipeName` varchar(255) DEFAULT NULL,
   `recipeImage` varchar(255) DEFAULT NULL,
   `categoryType` varchar(255) DEFAULT NULL,
@@ -67,8 +67,20 @@ CREATE TABLE `recipe_table` (
 -- Dumping data for table `recipe_table`
 --
 
-INSERT INTO `recipe_table` (`Recipe_id`, `recipeName`, `recipeImage`, `categoryType`, `directions`, `prepTime`, `recipeVideo`, `ingredients`) VALUES
-(3, 'momo', '', 'terai', 'wfwdvsd', 'sdvsdv', '', 'meow mewo');
+INSERT INTO `recipe_table` (`id`, `recipeName`, `recipeImage`, `categoryType`, `directions`, `prepTime`, `recipeVideo`, `ingredients`) VALUES
+(5, 'Diya', 'https://media.licdn.com/dms/image/D4E03AQGupXuBdJC8fA/profile-displayphoto-shrink_800_800/0/1710311763134?e=2147483647&v=beta&t=YN7DHeJuzOHx-hJN-sKIXRJYL4gt55PbeTcP3I1p0v4', 'Indian', 'Marinate chicken. Grill or bake. Make tomato-based sauce. Combine and simmer.', '55 minutes', 'https://www.youtube.com/watch?v=cyX7iM6jhAI', 'Chicken, Yogurt, Tomato, Cream, Spices'),
+(6, 'Caesar Salad', 'caesar_salad.jpg', 'Salad', 'Toss romaine lettuce with Caesar dressing. Add croutons and Parmesan cheese.', '15 minutes', NULL, 'Romaine lettuce, Caesar dressing, Croutons, Parmesan cheese'),
+(7, 'Chocolate Chip Cookies', 'chocolate_chip_cookies.jpg', 'Dessert', 'Cream butter and sugar. Add eggs and vanilla. Mix in flour and chocolate chips. Bake.', '20 minutes', 'https://www.youtube.com/watch?v=Z8qoNs4P_fk', 'Butter, Sugar, Eggs, Vanilla extract, Flour, Chocolate chips'),
+(8, 'Spaghetti Bolognese', 'spaghetti_bolognese.jpg', 'Italian', 'Cook minced meat with onions, garlic, and tomatoes. Serve over cooked spaghetti.', '60 minutes', NULL, 'Ground beef, Onion, Garlic, Tomatoes, Spaghetti'),
+(9, 'Sushi Rolls', 'sushi_rolls.jpg', 'Japanese', 'Prepare sushi rice. Roll with seaweed, fish, and vegetables. Slice and serve with soy sauce.', '45 minutes', 'https://www.youtube.com/watch?v=_hiClrL27j0', 'Sushi rice, Nori (seaweed), Fish (e.g., salmon, tuna), Vegetables (e.g., cucumber, avocado)'),
+(10, 'Roast Chicken', 'roast_chicken.jpg', 'Main Dish', 'Season chicken. Roast in the oven until golden brown and cooked through.', '90 minutes', NULL, 'Whole chicken, Salt, Pepper, Herbs (e.g., rosemary, thyme)'),
+(11, 'Tomato Basil Soup', 'tomato_basil_soup.jpg', 'Soup', 'Saute onions and garlic. Add tomatoes and basil. Blend until smooth. Serve hot.', '30 minutes', NULL, 'Tomatoes, Onion, Garlic, Fresh basil, Chicken or vegetable broth'),
+(12, 'Guacamole', 'guacamole.jpg', 'Mexican', 'Mash avocados with lime juice, onion, and cilantro. Season with salt and pepper.', '15 minutes', NULL, 'Avocados, Lime juice, Onion, Cilantro, Salt, Pepper'),
+(13, 'Beef Stir Fry', 'beef_stir_fry.jpg', 'Asian', 'Stir-fry beef with vegetables in a hot wok. Add soy sauce and other seasonings.', '20 minutes', NULL, 'Beef (e.g., flank steak), Bell peppers, Broccoli, Soy sauce, Garlic, Ginger'),
+(14, 'Greek Salad', 'greek_salad.jpg', 'Salad', 'Combine tomatoes, cucumbers, olives, and feta cheese. Dress with olive oil and vinegar.', '15 minutes', NULL, 'Tomatoes, Cucumbers, Olives, Feta cheese, Olive oil, Vinegar'),
+(15, 'Apple Pie', 'apple_pie.jpg', 'Dessert', 'Prepare pie crust. Fill with sliced apples, sugar, and spices. Bake until golden brown.', '60 minutes', 'https://www.youtube.com/watch?v=ab9HZv3jHbM', 'Apples, Sugar, Cinnamon, Nutmeg, Pie crust'),
+(16, 'Kasimir Dorsey', 'Enim eaque in ration', NULL, NULL, NULL, NULL, NULL),
+(17, 'Rylee Mckinney', 'At duis modi quibusd', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -132,7 +144,7 @@ ALTER TABLE `ingredient`
 -- Indexes for table `recipe_table`
 --
 ALTER TABLE `recipe_table`
-  ADD PRIMARY KEY (`Recipe_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `review`
@@ -169,7 +181,7 @@ ALTER TABLE `ingredient`
 -- AUTO_INCREMENT for table `recipe_table`
 --
 ALTER TABLE `recipe_table`
-  MODIFY `Recipe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -192,7 +204,7 @@ ALTER TABLE `user`
 --
 ALTER TABLE `review`
   ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`recipe_id`) REFERENCES `recipe_table` (`Recipe_id`);
+  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`recipe_id`) REFERENCES `recipe_table` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
