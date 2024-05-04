@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true ) {
     //if user is not loginn then he cant access the admin dashboard  if he tried to then he will be redirected to login page
-    header('Location: http://localhost/Project/login');
+    header('Location: ../login');
     
     exit();
 }
@@ -35,7 +35,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true ) {
             <li><i class="fa-regular fa-comment"></i><a href="#" rel="noreferrer">Comments</a></li>
             <?php
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    echo '<li><i class="fa-solid fa-gear"></i><a href="http://localhost/Project/logout.php" rel="noreferrer">Log out</a></li>';
+    echo '<li><i class="fa-solid fa-gear"></i><a href="../logout.php" rel="noreferrer">Log out</a></li>';
 }
 ?>     
             </div>

@@ -35,9 +35,9 @@ session_start();
 <?php
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     echo '<li><a href="#">My Profile<i class="fa-solid fa-right-to-bracket"></i></a></li>';
-    echo '<li><a href="http://localhost/Project/logout.php">Logout<i class="fa-solid fa-right-to-bracket"></i></a></li>';
+    echo '<li><a href="../logout.php">Logout<i class="fa-solid fa-right-to-bracket"></i></a></li>';
 } else {
-    echo '<li><a href="http://localhost/Project/login">Log in<i class="fa-solid fa-right-to-bracket"></i></a></li>';
+    echo '<li><a href="../login">Log in<i class="fa-solid fa-right-to-bracket"></i></a></li>';
 }
 ?>     
             </ul>
