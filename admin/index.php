@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true ) {
+    //if user is not loginn then he cant access the admin dashboard  if he tried to then he will be redirected to login page
+    header('Location: http://localhost/Project/login');
+    
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,12 +28,16 @@
                 <h2>Byanjan</h2>
             </div>
             <div class="items">
-            <li><i class="fa-solid fa-chart-pie"></i><a href="#" rel="noreferrer">Dashboard</a></li>
+            <li><i class="fa-solid fa-chart-pie"></i><a href="#" rel="noreferrer">User Management</a></li>
             <li><i class="fa-solid fa-layer-group"></i><a href="#" rel="noreferrer">Categories</a></li>
-            <li><i class="fa-solid fa-bowl-rice"></i><a href="#" rel="noreferrer">Recipes</a></li>
+            <li><i class="fa-solid fa-bowl-rice"></i><a href="../recipecrud" rel="noreferrer">Recipes</a></li>
             <li><i class="fa-regular fa-star"></i><a href="#" rel="noreferrer">Ratings</a></li>
             <li><i class="fa-regular fa-comment"></i><a href="#" rel="noreferrer">Comments</a></li>
-            <li><i class="fa-solid fa-gear"></i><a href="#" rel="noreferrer">Settings</a></li>         
+            <?php
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+    echo '<li><i class="fa-solid fa-gear"></i><a href="http://localhost/Project/logout.php" rel="noreferrer">Log out</a></li>';
+}
+?>     
             </div>
         </section>
         <section id="interface">

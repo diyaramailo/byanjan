@@ -470,3 +470,71 @@ footer .copyright p{
    color: #101C32;
    padding: 10px;
 }
+/* home */
+#home{
+    background-image: url("../images/yumly.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#home{
+    padding: 4.5rem 0 1.5rem;
+}
+
+.container{
+    position: relative;
+    width:100%;
+    min-height: 640px;
+    display: flex;
+    align-items:center;
+    background: url("img/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.container img{
+    width: 400px;
+    position: absolute;
+    bottom:-500px;
+    right: 200px;
+}
+
+.home-text{
+    padding: 0 150px;
+}
+
+.home-text h1{
+    font-size: 3.5rem;
+    font-weight:700;
+    margin-bottom: 2rem;
+    color: rgb(251, 253, 253);
+}
+.btn{
+    padding: 0.6rem 1rem;
+    background: rgb(255, 238, 0);
+    color: var(--bg-color);
+    font-weight:400;
+    border-radius: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 00.5rem;
+    max-width: 160px;
+    text-decoration: none;
+    font-size: 20px;
+}
+.btn .bx{
+    padding:4px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    border-radius: 1rem;
+    font: 20px;
+    margin: auto;
+}
+
+.btn:hover{
+    background: rgb(247, 210, 136);
+    transition: 0.2s;
+    border-collapse: collapse;
+}

@@ -25,21 +25,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $emailErr = "Enter a valid email address";
-         
+        $emailErr = "Enter a valid email address"; 
     }
 else
- {   $sql = "SELECT * FROM registration WHERE email='$email'";
+ {   $sql = "SELECT * FROM user WHERE email='$email'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         // Verify password
         if (password_verify($password, $row['password'])) {
-            // Password correct, set session and redirect
+            // Password correct, set session and redirect as per user login
             $_SESSION['logged_in'] = true;
-            header("Location: ../index");
-            exit();
+            $_SESSION['role'] = $row['role'];
+            if ($row['role'] =='user'){
+                header("Location: ../index");
+                
+              } else {
+                    // Redirect to admin page
+                    header("Location: ../admin");
+                    exit();
+            }
         } else {
             // Password incorrect
             $passwordErr = "Password Incorrect";        }
@@ -87,13 +93,11 @@ $conn->close();
                         <?php
                         echo ($passwordErr);
                         ?>
-                    </div>
-                
+                    </div>                
                     <div class="group">   
                         <button type="submit" name="Submit">Login</button>
                     </div>
                 </form>
-               
 
             </div>
         </div>

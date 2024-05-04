@@ -1,15 +1,17 @@
 <?php
 
 
+session_start();
+
 $fullname = $email = $address = $phone = $gender = $password = $confirm_password = ""; //hold the data submitted by the user
 
-$fullnameErr = $emailErr = $passwordErr = $confirmPasswordErr = ""; //holds error messages for form validation
+$fullnameErr = $emailErr = $passwordErr = $confirmPasswordErr = $required_checkboxErr = ""; //holds error messages for form validation
 
 // Function to sanitize or cleanse input data
 function sanitize_input($data) {
     $data = trim($data); //removes white spaces from beginning and end
-    $data = stripslashes($data); //removes backslases "/" from a string
-    $data = htmlspecialchars($data); //converts special characters to html entities
+    $data = stripslashes($data); //removes backslashes "/" from a string
+    $data = htmlspecialchars($data); //converts special characters to HTML entities
     return $data;
 }
 
@@ -31,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $emailErr = "Email is required";
     } else {
         $email = sanitize_input($_POST["email"]);
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { // Check if email address is well-formed using the built in php filter
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { // Check if email address is well-formed using the built-in PHP filter
             $emailErr = "Invalid email format";
         }
     }
@@ -57,38 +59,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $confirmPasswordErr = "Passwords do not match";
         }
     }
-    $password = password_hash($password, PASSWORD_DEFAULT);
-    $address = $_POST["address"];
-    $gender = $_POST["gender"];
-    $phone = $_POST["phone"];
 
-    // If all validations pass, process the form data further
+    if (empty($_POST["agreement"])){
+        $required_checkboxErr = "This field is required";
+    } else { 
+        $required_checkboxErr = sanitize_input($_POST["agreement"]);
+    }
+    
+    // If all validations pass, proceed to check email existence and insert into database
     if (empty($fullnameErr) && empty($emailErr) && empty($passwordErr) && empty($confirmPasswordErr)) {
         $servername = "localhost";
         $username = "root"; // Your MySQL username
         $db_password = ""; // Your MySQL password
         $dbname = "byanjan";
-    
+
         // Create connection
         $conn = new mysqli($servername, $username, $db_password, $dbname);
-    
+
         // Check connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-    
-        // Prepare SQL statement to insert user data into the users table
-        $sql = "INSERT INTO registration (fullname, email, password, address, phone, gender) VALUES ('$fullname', '$email', '$password', '$address', '$phone', '$gender')";
-        $conn->query($sql);
-    
-        // Close the statement and connection
+
+        // Check if the email already exists in the database
+        $email_exists = false;
+        $sql_check_email = "SELECT * FROM user WHERE email='$email'";
+        $result_check_email = $conn->query($sql_check_email);
+        if ($result_check_email->num_rows > 0) {
+            $email_exists = true;
+            $emailErr = "The email is already registered.";
+        }
+
+        // If the email does not exist and all validations pass, proceed with registration
+        if (!$email_exists) {
+            // Hash the password
+            $password = password_hash($password, PASSWORD_DEFAULT);
+
+            // Prepare SQL statement to insert user data into the users table
+            $sql = "INSERT INTO user (fullname, email, password, address, phone, gender) VALUES ('$fullname', '$email', '$password', '$address', '$phone', '$gender')";
+            if ($conn->query($sql) === TRUE) {
+                // Registration successful
+                echo "Redirecting to login";
+                header("Location: ../login");
+                exit();
+            } else {
+                // Error inserting data into database
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        }
+
+        // Close the connection
         $conn->close();
-        echo "Redirecting to: login";
-        header("Location: ../login");
-        exit();
-
-     }
-
+    }
 }
 ?>
 
@@ -150,8 +172,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span class="error"><?php echo $confirmPasswordErr; ?></span>
         </div>
         <div class="field-group field-group-alt">
-            <input type="checkbox" id="m_agree" name="agreement" value="1">
+            <input type="checkbox" id="m_agree" name="agreement" value="1" required >
             <label for="m_agree">I agree to register new data on this website.</label>
+            <span class="error"><?php echo $required_checkboxErr; ?></span>
+
         </div>
         <div>
             <button type="submit">Register Data</button>
