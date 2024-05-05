@@ -2,7 +2,7 @@
 require_once('../../db_connect.php');
 
 // Query to fetch all recipes from the database
-$sql = "SELECT * FROM recipe_table";
+$sql = "SELECT * FROM recipe_table order by id desc";
 $result = mysqli_query($conn, $sql);
 
 // Check if recipes exist

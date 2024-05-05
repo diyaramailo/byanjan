@@ -538,3 +538,25 @@ footer .copyright p{
     transition: 0.2s;
     border-collapse: collapse;
 }
+
+.rating {
+    display: inline-block;
+    font-size: 24px;
+}
+
+.rating form {
+    display: inline-block;
+}
+
+.rating input[type="hidden"] {
+    display: none;
+}
+
+.rating .fa-star {
+    color: #ccc;
+    cursor: pointer;
+}
+
+.rating .checked {
+    color: orange; /* Change color to orange */
+}

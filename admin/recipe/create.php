@@ -5,15 +5,20 @@ if (isset($_POST['saveRecipe'])) {
     // Retrieve form data
     $recipeName = $_POST['recipeName'];
     $recipeImage = $_POST['recipeImage'];
+    $categoryType = $_POST['categoryType'];
+    $directions = $_POST['directions'];
+    $prepTime = $_POST['prepTime'];
+    $recipeVideo = $_POST['recipeVideo'];
+    $ingredients = $_POST['ingredients'];
 
     // Validate and sanitize form data (you can add more validations here)
 
     // Prepare and execute SQL insert query
-    $sql = "INSERT INTO recipe_table (recipeName, recipeImage) VALUES (?, ?)";
+    $sql = "INSERT INTO recipe_table (recipeName, recipeImage, categoryType, directions, prepTime, recipeVideo, ingredients) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
 
     if ($stmt) {
-        mysqli_stmt_bind_param($stmt, "ss", $recipeName, $recipeImage);
+        mysqli_stmt_bind_param($stmt, "sssssss", $recipeName, $recipeImage, $categoryType, $directions, $prepTime, $recipeVideo, $ingredients);
         $result = mysqli_stmt_execute($stmt);
 
         if ($result) {

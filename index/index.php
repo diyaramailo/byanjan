@@ -26,9 +26,9 @@ session_start();
                 <li><div class="dropdown">
                     <button class="dropbtn">Categories</button>
                     <div class="dropdown-content">
-                      <a href="terai.php">Terai Region</a>
-                      <a href="hilly.php">Hilly Region</a>
-                      <a href="himalayan.php">Himalayan Region</a>
+                        <a href="recipe.php?categoryType=Terai">Terai Region</a>
+                        <a href="recipe.php?categoryType=Hilly">Hilly Region</a>
+                        <a href="recipe.php?categoryType=Himalayan">Himalayan Region</a>
                     </div>
                   </div>
                 </li>
@@ -76,59 +76,75 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
    
     
 <!-- Section for best recipe of the week -->
-    <section id="bestrecipe">
-        <h1>Best Rated Recipes of the Week!</h1>
-        <div class="recipe-col">
-            <div class="recipe-sec">
-                <img src="../images/newari_khaja_set.jpg" alt="">
-                <div class="details">
-                   <h4>Newari Khaja Set</h4> 
-                    <i class="fa-solid fa-circle-arrow-right"></i>
+<section id="bestrecipe">
+    <h1>Best Rated Recipes!</h1>
+    <div class="recipe-col">
+    <?php
+    require_once('../db_connect.php');
+
+    $sql = "SELECT rt.*, COALESCE(SUM(r.rating), 0) AS total_rating
+        FROM recipe_table rt
+        LEFT JOIN review r ON rt.id = r.recipe_id
+        GROUP BY rt.id
+        ORDER BY total_rating DESC
+        LIMIT 3";
+
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+            <div class="recipe-col">
+                <div class="recipe-sec">
+                    <img src="<?php echo $row['recipeImage']; ?>" alt="<?php echo $row['recipeName']; ?>">
+                    <div class="details">
+                        <h4><?php echo $row['recipeName']; ?></h4>
+                        <i class="fa-solid fa-circle-arrow-right"></i>
+                    </div>
                 </div>
             </div>
-            <div class="recipe-sec">
-                <img src="../images/poori_masala.jpg" alt="">
-                <div class="details">
-                   <h4>Poori Masala</h4> 
-                    <i class="fa-solid fa-circle-arrow-right"></i>
-                </div>
-            </div>
-            <div class="recipe-sec">
-                <img src="../images/momo.jpg" alt="">
-                <div class="details">
-                   <h4>Nepali Momo</h4> 
-                    <i class="fa-solid fa-circle-arrow-right"></i>
-                </div>
-            </div>
-        </div>
-    </section>
+    <?php
+        }
+    } else {
+        echo "No recipes found.";
+    }
+
+    ?>
+    </div>
+</section>
+
 <!-- section for try new recipe -->
-    <section id="tryrecipe">
-        <h1>What Would You Like to Try Making Today?</h1>
-        <div class="try-col">
+<section id="tryrecipe">
+    <h1>What Would You Like to Try Making Today?</h1>
+    <div class="try-col">
+    <?php
+    // Establish a new database connection
+    require_once('../db_connect.php');
+
+    $sql = "SELECT * FROM recipe_table ORDER BY RAND() LIMIT 3";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
             <div class="try-sec">
-                <img src="../images/kheer.jpg" alt="">
+                <img src="<?php echo $row['recipeImage']; ?>" alt="<?php echo $row['recipeName']; ?>">
                 <div class="details">
-                   <h4>Kheer</h4> 
+                    <h4><?php echo $row['recipeName']; ?></h4>
                     <i class="fa-solid fa-circle-arrow-right"></i>
                 </div>
             </div>
-            <div class="try-sec">
-                <img src="../images/sel.JPG" alt="">
-                <div class="details">
-                   <h4>Sel Roti</h4> 
-                    <i class="fa-solid fa-circle-arrow-right"></i>
-                </div>
-            </div>
-            <div class="try-sec">
-                <img src="../images/ghongi.jpeg" alt="">
-                <div class="details">
-                   <h4>Ghongi</h4> 
-                    <i class="fa-solid fa-circle-arrow-right"></i>
-                </div>
-            </div>
-        </div>
-    </section>
+    <?php
+        }
+    } else {
+        echo "No recipes found.";
+    }
+
+    mysqli_close($conn);
+    ?>
+    </div>
+</section>
+
     <!-- footer section -->
     <footer>
         <div class="footer-col">

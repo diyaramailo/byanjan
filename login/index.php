@@ -38,6 +38,7 @@ else
             // Password correct, set session and redirect as per user login
             $_SESSION['logged_in'] = true;
             $_SESSION['role'] = $row['role'];
+            $_SESSION['userId'] = $row['id'];
             if ($row['role'] =='user'){
                 header("Location: ../index");
                 
