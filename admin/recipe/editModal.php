@@ -47,6 +47,10 @@
                         <label for="editIngredients">Ingredients</label>
                         <textarea class="form-control" id="editIngredients" name="editIngredients" rows="6" required><?php echo $recipe['ingredients']; ?></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="approval">Approve</label>
+                        <input type="checkbox" id="approval" name="approval" <?php if ($recipe['is_approved'] == 1) echo 'checked'; ?> value="1">
+                    </div>
 
                     <button type="submit" class="btn btn-primary" name="updateRecipe">Update Recipe</button>
                 </form>

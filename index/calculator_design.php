@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>calculator</title>
-
-    <!-- link to css -->
-    <link rel="stylesheet" href="calculator_design.css">
-</head>
-<body>
-        <div class="calculator">
+<?php
+$additional_css = 'calculator_design.css';
+require_once('./header.php');
+?>
+        <div class="calculator m-5">
             <h2>Calculate Required Quantity</h2>
-            <div class="calculate">
+            <form class="calculate">
                 <label for="o_recipe">Original Recipe Serve</label>
                 <input type="number" name="o_recipe">
 
@@ -38,6 +31,7 @@
             </div>
             
         </div>
-        
-</body>
-</html>
+
+<?php
+require_once('./footer.php');
+?>

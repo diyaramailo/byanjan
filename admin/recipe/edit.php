@@ -11,6 +11,7 @@ if (isset($_POST['updateRecipe'])) {
     $prepTime = $_POST['editPrepTime'];
     $recipeVideo = $_POST['editRecipeVideo'];
     $ingredients = $_POST['editIngredients'];
+    $isApproved = isset($_POST['approval']) ? 1 : 0;
 
     // Validate and sanitize form data (you can add more validations here)
 
@@ -22,13 +23,14 @@ if (isset($_POST['updateRecipe'])) {
             directions = ?,
             prepTime = ?,
             recipeVideo = ?,
-            ingredients = ?
+            ingredients = ?,
+            is_approved = ?
             WHERE id = ?";
     
     $stmt = mysqli_prepare($conn, $sql);
 
     if ($stmt) {
-        mysqli_stmt_bind_param($stmt, "sssssssi", $recipeName, $recipeImage, $categoryType, $directions, $prepTime, $recipeVideo, $ingredients, $recipeId);
+        mysqli_stmt_bind_param($stmt, "sssssssii", $recipeName, $recipeImage, $categoryType, $directions, $prepTime, $recipeVideo, $ingredients, $isApproved, $recipeId);
         $result = mysqli_stmt_execute($stmt);
 
         if ($result) {

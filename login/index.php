@@ -44,7 +44,7 @@ else
                 
               } else {
                     // Redirect to admin page
-                    header("Location: ../admin");
+                    header("Location: ../admin/recipe");
                     exit();
             }
         } else {

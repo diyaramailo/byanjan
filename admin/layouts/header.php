@@ -33,14 +33,12 @@ $title = 'Admin Dashboard';
                 <h2>Byanjan</h2>
             </div>
             <div class="items">
-                <li><i class="fa-solid fa-chart-pie"></i><a href="#" rel="noreferrer">User Management</a></li>
-                <li><i class="fa-solid fa-layer-group"></i><a href="#" rel="noreferrer">Categories</a></li>
-                <li><i class="fa-solid fa-bowl-rice"></i><a href="./recipe" rel="noreferrer">Recipes</a></li>
-                <li><i class="fa-regular fa-star"></i><a href="#" rel="noreferrer">Ratings</a></li>
-                <li><i class="fa-regular fa-comment"></i><a href="#" rel="noreferrer">Comments</a></li>
+                <li><i class="fa-solid fa-bowl-rice"></i><a href="http://localhost/Byanjan/admin/recipe" rel="noreferrer">Recipes</a></li>
+                <li><i class="fa-solid fa fa-check"></i><a href="http://localhost/Byanjan/admin/recipe/approval" rel="noreferrer">Recipes Approval</a></li>
+                <li><i class="fa-regular fa-star"></i><a href="http://localhost/Byanjan/admin/recipe/ratings" rel="noreferrer">Ratings</a></li>
                 <?php
                 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-                    echo '<li><i class="fa-solid fa-gear"></i><a href="../logout.php" rel="noreferrer">Log out</a></li>';
+                    echo '<li><i class="fa-solid fa-gear"></i><a href="http://localhost/Byanjan/logout.php" rel="noreferrer">Log out</a></li>';
                 }
                 ?>
             </div>
