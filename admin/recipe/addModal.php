@@ -21,7 +21,12 @@
                     </div>
                     <div class="form-group">
                         <label for="categoryType">Category Type</label>
-                        <input type="text" class="form-control" id="categoryType" name="categoryType" required>
+                        <select class="form-control" id="categoryType" name="categoryType" required>
+                            <option value="">Select Category</option>
+                            <option value="Terai">Terai</option>
+                            <option value="Himalayan">Himalayan</option>
+                            <option value="Hilly">Hilly</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="directions">Directions</label>

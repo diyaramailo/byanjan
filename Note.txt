@@ -1,13 +1,6 @@
-recipe search garna milne option
 user and admin both can add the recipes
 each crud ko lagi admin bata verify hunu paryo
-recipe post hunu aagi admin bata verify hunu parne optiion
 aafno recioe ma aaru le edit garna paudaina
-boook mark option use can book mark the recipes(login xaina vane book mark garna payena)
-blog system
-admin le verify garepaxi matra show hunxa aaru user lai
+calculator
 
-you tube video embed garera rakhna milne option in recipes
-
-recently added recipes option for the users
 

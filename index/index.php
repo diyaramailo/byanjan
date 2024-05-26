@@ -26,9 +26,9 @@ session_start();
                 <li><div class="dropdown">
                     <button class="dropbtn">Categories</button>
                     <div class="dropdown-content">
-                        <a href="recipe.php?categoryType=Terai">Terai Region</a>
-                        <a href="recipe.php?categoryType=Hilly">Hilly Region</a>
-                        <a href="recipe.php?categoryType=Himalayan">Himalayan Region</a>
+                        <a href="recipe?categoryType=Terai">Terai Region</a>
+                        <a href="recipe?categoryType=Hilly">Hilly Region</a>
+                        <a href="recipe?categoryType=Himalayan">Himalayan Region</a>
                     </div>
                   </div>
                 </li>
